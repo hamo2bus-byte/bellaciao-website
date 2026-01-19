@@ -42,3 +42,14 @@ footer {
   padding: 20px;
   text-align: center;
 }
+.gallery .images {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 300px;
+  border-radius: 15px;
+}
