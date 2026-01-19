@@ -2,126 +2,42 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
+  <title>Bellaciao Cafe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>كافيه بيلا تشاو - المحمودية (نسخة تجريبية)</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fff8f0;
-      color: #333;
-    }
-    header {
-      background: #d46a6a;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 40px 20px;
-    }
-    h2 {
-      color: #d46a6a;
-      margin-bottom: 20px;
-    }
-    form input, form select, form textarea {
-      display: block;
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    form button {
-      background: #d46a6a;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>كافيه بيلا تشاو - المحمودية (نسخة تجريبية)</h1>
-    <nav>
-      <a href="#home">الرئيسية</a>
-      <a href="#reservation">حجز أونلاين</a>
-      <a href="#orders">طلب أونلاين</a>
-      <a href="#contact">تواصل معنا</a>
-    </nav>
-  </header>
+<header class="hero">
+  <div class="overlay">
+    <h1>Bellaciao Café</h1>
+    <p>قعدة مزاج • قهوة مظبوطة • واي فاي</p>
+    <a href="https://wa.me/201000000000" class="btn">احجز دلوقتي</a>
+  </div>
+</header>
 
-  <section id="home">
-    <h2>مرحبا بكم في كافيه بيلا تشاو</h2>
-    <p>استمتعوا بالقهوة والمأكولات في أجواء دافئة ومريحة بالعائلات والكابلز فقط.</p>
-  </section>
+<section class="about">
+  <h2>عن الكافيه</h2>
+  <p>
+    Bellaciao Café مكان هادي يجمع بين القهوة المزبوطة
+    والأجواء المريحة.
+  </p>
+</section>
 
-  <section id="reservation">
-    <h2>حجز أونلاين (نسخة تجريبية)</h2>
-    <form onsubmit="alert('تم إرسال طلب الحجز (تجريبي)'); return false;">
-      <input type="text" placeholder="الاسم الكامل" required>
-      <input type="tel" placeholder="رقم الهاتف" required>
-      <input type="date" required>
-      <input type="time" required>
-      <select required>
-        <option value="">عدد الأشخاص</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4+</option>
-      </select>
-      <button type="submit">احجز الآن</button>
-    </form>
-  </section>
+<section class="menu">
+  <h2>المنيو</h2>
+  <ul>
+    <li>☕ قهوة تركي</li>
+    <li>☕ اسبريسو</li>
+    <li>🥤 آيس كوفي</li>
+    <li>🍰 تشيز كيك</li>
+  </ul>
+</section>
 
-  <section id="orders">
-    <h2>طلب أونلاين (نسخة تجريبية)</h2>
-    <form onsubmit="alert('تم إرسال الطلب (تجريبي)'); return false;">
-      <select required>
-        <option value="">اختر صنف</option>
-        <option value="قهوة أمريكانو">قهوة أمريكانو</option>
-        <option value="لاتيه">لاتيه</option>
-        <option value="كابتشينو">كابتشينو</option>
-        <option value="ساندوتش">ساندوتش</option>
-        <option value="كريب">كريب</option>
-      </select>
-      <input type="number" placeholder="الكمية" required>
-      <select required>
-        <option value="">طريقة الدفع</option>
-        <option value="vodafonecash">فودافون كاش</option>
-        <option value="instapay">إنستا باي</option>
-        <option value="cashondelivery">الدفع عند الاستلام</option>
-      </select>
-      <button type="submit">اطلب الآن</button>
-    </form>
-  </section>
-
-  <section id="contact">
-    <h2>تواصل معنا</h2>
-    <p>العنوان: المحمودية - برج سما</p>
-    <p>الهاتف: 0123456789</p>
-    <p>البريد: info@bellachao.com</p>
-  </section>
-
-  <footer>
-    <p>© 2026 كافيه بيلا تشاو - المحمودية (نسخة تجريبية)</p>
-  </footer>
+<footer>
+  <p>📍 العنوان: المحوديه /برج سما</p>
+  <p>📞 للتواصل: 01211242211</p>
+</footer>
 
 </body>
 </html>
