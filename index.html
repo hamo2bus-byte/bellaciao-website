@@ -1,20 +1,96 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <title>Bella Ciao Café | بيلا تشاو</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- خط عربي -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;900&display=swap" rel="stylesheet">
 
-  <!-- ملف التنسيق -->
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* إعدادات عامة للخط */
+    body {
+        font-family: 'Tajawal', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f9f9f9; /* لون خلفية فاتح */
+    }
+
+    /* تنسيق قسم المنيو الجديد */
+    .menu-section {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #fff; /* خلفية بيضاء لتمييز المنيو */
+    }
+
+    .menu-section h2 {
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 2em;
+    }
+
+    /* حاوية الصور المتحركة */
+    .menu-carousel {
+        display: flex;
+        overflow-x: auto; /* السماح بالتمرير الأفقي */
+        scroll-snap-type: x mandatory; /* تفعيل خاصية الجذب عند التمرير */
+        gap: 25px; /* مسافة بين صور المنيو */
+        padding: 20px 5%; /* حواف داخلية */
+        -webkit-overflow-scrolling: touch; /* تمرير سلس على أجهزة آبل */
+
+        /* إخفاء شريط التمرير السفلي لمظهر أنظف */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE 10+ */
+    }
+    .menu-carousel::-webkit-scrollbar {
+        display: none; /* Chrome/Safari/Webkit */
+    }
+
+    /* تنسيق صور المنيو نفسها */
+    .menu-carousel img {
+        scroll-snap-align: center; /* الصورة تقف في منتصف الشاشة */
+        flex: 0 0 auto; /* منع الصورة من الانكماش */
+        width: 85vw; /* عرض الصورة 85% من عرض شاشة الموبايل */
+        max-width: 400px; /* أقصى عرض للصورة على الشاشات الكبيرة */
+        height: auto; /* الحفاظ على أبعاد الصورة */
+        border-radius: 15px; /* حواف دائرية للصور */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* ظل خفيف لإبراز المنيو */
+        transition: transform 0.3s ease;
+    }
+    
+    /* تأثير بسيط عند الضغط على الصورة */
+    .menu-carousel img:active {
+        transform: scale(0.98);
+    }
+
+    /* تلميح للمستخدم */
+    .swipe-hint {
+        font-size: 0.9em;
+        color: #777;
+        margin-top: 15px;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+        40% {transform: translateX(-10px);}
+        60% {transform: translateX(-5px);}
+    }
+
+    /* تنسيقات بسيطة لباقي الأقسام لضمان عمل الكود (في حال لم يكن ملف style.css جاهزاً) */
+    .hero { background: #333; color: #fff; padding: 60px 20px; text-align: center; }
+    .btn { display: inline-block; background: gold; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px;}
+    .about, .gallery, footer { text-align: center; padding: 40px 20px; }
+    .gallery .images img { width: 100px; height: 100px; margin: 5px; object-fit: cover; border-radius: 10px;}
+    footer { background: #222; color: #fff; }
+  </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <header class="hero">
   <div class="overlay">
     <h1>Bella Ciao Café</h1>
@@ -27,7 +103,6 @@
   </div>
 </header>
 
-<!-- ABOUT -->
 <section class="about">
   <h2>عن الكافيه</h2>
   <p>
@@ -37,30 +112,27 @@
   </p>
 </section>
 
-<!-- MENU -->
-<section class="menu">
+<section class="menu-section" id="menu">
   <h2>المنيو</h2>
-  <div class="menu-items">
-    <div class="item">☕ قهوة تركي</div>
-    <div class="item">☕ اسبريسو</div>
-    <div class="item">🥤 آيس كوفي</div>
-    <div class="item">🍰 تشيز كيك</div>
-  </div>
-</section>
+  
+  <div class="menu-carousel">
+    <img src="cafe8.jpg" alt="صفحة المنيو الأولى - مشروبات ساخنة">
+    <img src="cafe9.jpg" alt="صفحة المنيو الثانية - مشروبات باردة">
+    <img src="cafe7.jpg" alt="صفحة المنيو الثالثة -المؤكولات ">
+        <img src="cafe9.jpg" alt="صفحة المنيو الرابعه -المؤكولات ">
 
-<!-- GALLERY -->
+    </div>
+  <p class="swipe-hint">اسحب لليسار واليمين لمشاهدة باقي المنيو ↔️</p>
+</section>
 <section class="gallery">
   <h2>صور من الكافيه</h2>
   <div class="images">
-    <img src="cafe6.jpg" alt="Bella Ciao Cafe">
-    <img src="cafe7.jpg" alt="Bella Ciao Cafe">
-    <img src="cafe8.jpg" alt="Bella Ciao Cafe">
-    <img src="cafe9.jpg" alt="Bella Ciao Cafe">
     <img src="cafe1.jpg" alt="Bella Ciao Cafe">
+    <img src="cafe2.jpg" alt="Bella Ciao Cafe">
+    <img src="cafe3.jpg" alt="Bella Ciao Cafe">
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>📍 العنوان: المحمودية - برج سما</p>
   <p>📞 للتواصل: 01211242211</p>
@@ -69,4 +141,3 @@
 
 </body>
 </html>
-
