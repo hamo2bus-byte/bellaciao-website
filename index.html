@@ -16,7 +16,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #f9f9f9; /* لون خلفية فاتح */
+        background-color: #f9f9f9;
     }
 
     /* واجهة الموقع */
@@ -33,12 +33,21 @@
         margin: auto;
     }
 
-    /* 🔥 لوجو الكافيه */
+    /* 🔥 لوجو الكافيه مع أنيميشن */
     .hero-logo {
-        width: 150px;            /* حجم اللوجو */
-        margin-bottom: 20px;     /* مسافة بين اللوجو والاسم */
-        filter: drop-shadow(0 6px 15px rgba(0,0,0,0.6)); /* ظل خفيف */
+        width: 150px;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 6px 15px rgba(0,0,0,0.6));
         display: inline-block;
+
+        /* أنيميشن حركة لطيفة */
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
 
     .btn {
@@ -88,6 +97,7 @@
         max-width: 400px;
         border-radius: 15px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
     }
 
     .menu-carousel img:active {
