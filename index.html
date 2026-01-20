@@ -4,209 +4,331 @@
   <meta charset="UTF-8">
   <title>Bella Ciao Café | بيلا تشاو</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
-    /* إعدادات عامة للخط */
+    /* ::::: متغيرات الألوان ::::: */
+    :root {
+        --primary-color: #FFD700; /* الذهبي */
+        --dark-bg: #1a1a1a;
+        --light-bg: #f4f4f4;
+        --text-color: #333;
+    }
+
+    /* ::::: إعدادات عامة ::::: */
     body {
         font-family: 'Tajawal', sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background-color: #f9f9f9;
+        background-color: var(--light-bg);
+        color: var(--text-color);
+        overflow-x: hidden;
     }
 
-    /* واجهة الموقع */
-    .hero {
-        background: #333;
+    /* ::::: شريط التنقل (Navbar) ::::: */
+    .navbar {
+        background: rgba(0, 0, 0, 0.9);
+        padding: 15px 20px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    
+    .navbar a {
         color: #fff;
-        padding: 80px 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1em;
+        transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+        color: var(--primary-color);
+    }
+
+    /* ::::: واجهة الموقع (Hero Section) ::::: */
+    .hero {
+        /* صورة خلفية وهمية - غير الرابط بصورة حقيقية من الكافيه لو حابب */
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* تأثير احترافي عند النزول */
+        color: #fff;
+        padding: 160px 20px 100px; /* مسافة من فوق عشان الناف بار */
         text-align: center;
         position: relative;
     }
 
-    .overlay {
-        max-width: 900px;
-        margin: auto;
-    }
-
-    /* 🔥 لوجو الكافيه مع أنيميشن */
     .hero-logo {
-        width: 150px;
+        width: 180px;
         margin-bottom: 20px;
-        filter: drop-shadow(0 6px 15px rgba(0,0,0,0.6));
-        display: inline-block;
-        animation: float 3s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+        animation: float 4s ease-in-out infinite;
     }
 
     @keyframes float {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
     }
 
-    /* زر الحجز مع تأثير hover */
+    .hero h1 {
+        font-size: 3em;
+        margin: 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--primary-color);
+    }
+
+    .hero p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto 30px;
+    }
+
+    /* ::::: الزر الرئيسي ::::: */
     .btn {
         display: inline-block;
-        background: linear-gradient(135deg, #FFD700, #FFC107);
+        background: var(--primary-color);
         color: #000;
-        padding: 12px 28px;
+        padding: 15px 40px;
         text-decoration: none;
-        border-radius: 25px;
-        margin-top: 20px;
-        font-weight: bold;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 50px;
+        font-weight: 900;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
     }
 
     .btn:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
+        background: #fff;
     }
 
-    /* قسم عن الكافيه */
-    .about, .gallery, footer {
+    /* ::::: الأقسام (About & Menu) ::::: */
+    section {
+        padding: 60px 20px;
         text-align: center;
-        padding: 40px 20px;
     }
 
-    /* قسم المنيو */
+    h2 {
+        font-size: 2.5em;
+        color: var(--dark-bg);
+        margin-bottom: 40px;
+        position: relative;
+        display: inline-block;
+    }
+
+    h2::after {
+        content: '';
+        display: block;
+        width: 60%;
+        height: 4px;
+        background: var(--primary-color);
+        margin: 10px auto 0;
+        border-radius: 2px;
+    }
+
     .menu-section {
-        text-align: center;
-        padding: 40px 20px;
-        background-color: #fff;
+        background: #fff;
     }
 
-    .menu-section h2 {
-        color: #333;
-        margin-bottom: 30px;
-        font-size: 2em;
-    }
-
+    /* ::::: المنيو المتحرك ::::: */
     .menu-carousel {
         display: flex;
         overflow-x: auto;
-        gap: 25px;
-        padding: 20px 5%;
-        scrollbar-width: none; /* Firefox */
+        gap: 20px;
+        padding: 20px 10px;
+        scroll-snap-type: x mandatory; /* عشان الصورة تقف في النص */
+        -webkit-overflow-scrolling: touch;
     }
 
     .menu-carousel::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
+        height: 8px;
     }
-
-    .menu-carousel img {
-        width: 85vw;
-        max-width: 400px;
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        transition: transform 0.3s ease;
-    }
-
-    .menu-carousel img:active {
-        transform: scale(0.98);
-    }
-
-    .swipe-hint {
-        font-size: 0.9em;
-        color: #777;
-        margin-top: 15px;
-        animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
-        40% {transform: translateX(-10px);}
-        60% {transform: translateX(-5px);}
-    }
-
-    /* صور من الكافيه */
-    .gallery .images img {
-        width: 100px;
-        height: 100px;
-        margin: 5px;
-        object-fit: cover;
+    
+    .menu-carousel::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
         border-radius: 10px;
     }
 
-    footer {
-        background: #222;
-        color: #fff;
+    .menu-carousel img {
+        flex: 0 0 85%; /* عرض الصورة */
+        max-width: 400px;
+        border-radius: 20px;
+        scroll-snap-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
     }
+
+    /* ::::: معرض الصور (Grid Gallery) ::::: */
+    .gallery {
+        background: var(--light-bg);
+    }
+
+    .images {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .images img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease, filter 0.3s;
+    }
+
+    .images img:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+        z-index: 2;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* ::::: زر الواتساب العائم ::::: */
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .whatsapp-float:hover {
+        background-color: #128C7E;
+        transform: scale(1.1);
+    }
+
+    /* ::::: الفوتر ::::: */
+    footer {
+        background: var(--dark-bg);
+        color: #fff;
+        padding: 50px 20px;
+        border-top: 5px solid var(--primary-color);
+    }
+    
+    footer p {
+        font-size: 1.1em;
+        margin: 10px 0;
+    }
+
+    footer i {
+        color: var(--primary-color);
+        margin-left: 10px;
+    }
+
   </style>
 </head>
 
 <body>
 
-<header class="hero">
-  <div class="overlay">
+<nav class="navbar">
+    <a href="#home">الرئيسية</a>
+    <a href="#menu">المنيو</a>
+    <a href="#gallery">الصور</a>
+    <a href="#contact">الحجز</a>
+</nav>
 
-    <!-- 🔥 صورة اللوجو -->
+<header class="hero" id="home">
     <img src="images/logo.png" alt="Bella Ciao Logo" class="hero-logo">
 
     <h1>Bella Ciao Café</h1>
     <p>
-      قعدة مزاج • ركن خاص بالعائلات والكابلز والبنات  
-      <br>
-      لوكيشن مميز للتصوير
+      أرقى الأجواء للعائلات والكابلز <br>
+      قهوة بمزاج .. ولوكيشن تصوير مميز
     </p>
-    <a href="https://wa.me/201211242211" class="btn">احجز دلوقتي</a>
-  </div>
+    <a href="https://wa.me/201211242211" class="btn">
+        <i class="fa-solid fa-calendar-check"></i> احجز طاولتك
+    </a>
 </header>
 
 <section class="about">
-  <h2>عن الكافيه</h2>
-  <p>
-    Bella Ciao Café هو المكان المثالي للاسترخاء والاستمتاع
-    بقهوة مظبوطة وأجواء راقية وهادية، في خصوصية كاملة
-    تناسب العائلات والكابلز.
+  <h2>عن المكان</h2>
+  <p style="font-size: 1.2em; line-height: 1.8; color: #555; max-width: 800px; margin: auto;">
+    في <strong>Bella Ciao</strong>، مش بنقدم مجرد قهوة، إحنا بنقدم تجربة. 
+    مكانك المثالي للهروب من دوشة اليوم، بخصوصية تامة وديكور مستوحى من الدراما العالمية عشان صورك تطلع تحفة.
   </p>
 </section>
 
 <section class="menu-section" id="menu">
-  <h2>المنيو</h2>
+  <h2>قائمة الطعام</h2>
   <div class="menu-carousel">
-    <img src="cafe8.jpg" alt="صفحة المنيو الأولى - مشروبات ساخنة">
-    <img src="cafe9.jpg" alt="صفحة المنيو الثانية - مشروبات باردة">
-    <img src="cafe7.jpg" alt="صفحة المنيو الثالثة - المؤكولات">
-    <img src="cafe6.jpg" alt="صفحة المنيو الرابعة - المؤكولات">
+    <img src="cafe8.jpg" alt="مشروبات ساخنة">
+    <img src="cafe9.jpg" alt="مشروبات باردة">
+    <img src="cafe7.jpg" alt="مأكولات 1">
+    <img src="cafe6.jpg" alt="مأكولات 2">
   </div>
-  <p class="swipe-hint">اسحب لليسار واليمين لمشاهدة باقي المنيو ↔️</p>
+  <p class="swipe-hint" style="color:#777; margin-top:15px">
+      <i class="fa-solid fa-hand-pointer"></i> اسحب يمين ويسار للتصفح
+  </p>
 </section>
 
-<section class="gallery">
-  <h2>صور من الكافيه</h2>
+<section class="gallery" id="gallery">
+  <h2>لقطات من الكافيه</h2>
   <div class="images">
-    <img src="cafe1.jpg" alt="Bella Ciao Cafe">
-    <img src="cafe2.jpg" alt="Bella Ciao Cafe">
-    <img src="cafe3.jpg" alt="Bella Ciao Cafe">
-    <img src="1.jpg" alt="Bella Ciao Cafe">
-    <img src="2.jpg" alt="Bella Ciao Cafe">
-    <img src="3.jpg" alt="Bella Ciao Cafe">
-    <img src="4.jpg" alt="Bella Ciao Cafe">
-    <img src="5.jpg" alt="Bella Ciao Cafe">
-    <img src="6.jpg" alt="Bella Ciao Cafe">
-    <img src="7.jpg" alt="Bella Ciao Cafe">
-    <img src="8.jpg" alt="Bella Ciao Cafe">
-    <img src="9.jpg" alt="Bella Ciao Cafe">
-    <img src="10.jpg" alt="Bella Ciao Cafe">
-    <img src="11.jpg" alt="Bella Ciao Cafe">
-    <img src="12.jpg" alt="Bella Ciao Cafe">
-    <img src="13.jpg" alt="Bella Ciao Cafe">
-    <img src="14.jpg" alt="Bella Ciao Cafe">
-    <img src="15.jpg" alt="Bella Ciao Cafe">
-    <img src="16.jpg" alt="Bella Ciao Cafe">
-    <img src="17.jpg" alt="Bella Ciao Cafe">
-    <img src="18.jpg" alt="Bella Ciao Cafe">
-    <img src="19.jpg" alt="Bella Ciao Cafe">
-    <img src="20.jpg" alt="Bella Ciao Cafe">
+    <img src="cafe1.jpg" alt="Bella Ciao">
+    <img src="cafe2.jpg" alt="Bella Ciao">
+    <img src="cafe3.jpg" alt="Bella Ciao">
+    <img src="1.jpg" alt="Bella Ciao">
+    <img src="2.jpg" alt="Bella Ciao">
+    <img src="3.jpg" alt="Bella Ciao">
+    <img src="4.jpg" alt="Bella Ciao">
+    <img src="5.jpg" alt="Bella Ciao">
+    <img src="6.jpg" alt="Bella Ciao">
+    <img src="7.jpg" alt="Bella Ciao">
+    <img src="8.jpg" alt="Bella Ciao">
+    <img src="9.jpg" alt="Bella Ciao">
+    <img src="10.jpg" alt="Bella Ciao">
+    <img src="11.jpg" alt="Bella Ciao">
+    <img src="12.jpg" alt="Bella Ciao">
+    <img src="13.jpg" alt="Bella Ciao">
+    <img src="14.jpg" alt="Bella Ciao">
+    <img src="15.jpg" alt="Bella Ciao">
+    <img src="16.jpg" alt="Bella Ciao">
+    <img src="17.jpg" alt="Bella Ciao">
+    <img src="18.jpg" alt="Bella Ciao">
+    <img src="19.jpg" alt="Bella Ciao">
+    <img src="20.jpg" alt="Bella Ciao">
   </div>
 </section>
 
-<footer>
-  <p>📍 العنوان: المحمودية - برج سما</p>
-  <p>📞 للتواصل: 01211242211</p>
-  <span>© 2026 Bella Ciao Café</span>
+<a href="https://wa.me/201211242211" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer id="contact">
+  <h2>تواصل معنا</h2>
+  <p><i class="fa-solid fa-location-dot"></i> العنوان: المحمودية - برج سما</p>
+  <p><i class="fa-solid fa-phone"></i> موبايل: 01211242211</p>
+  <br>
+  <span style="opacity: 0.6; font-size: 0.9em;">© 2026 Bella Ciao Café | All Rights Reserved</span>
 </footer>
 
 </body>
