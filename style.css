@@ -20,7 +20,7 @@ body {
   line-height: 1.8;
 }
 
-/* HERO */
+/* واجهة الموقع */
 .hero {
   height: 100vh;
   background-image: url("https://images.unsplash.com/photo-1509042239860-f550ce710b93");
@@ -29,6 +29,7 @@ body {
   position: relative;
 }
 
+/* طبقة التعتيم */
 .overlay {
   position: absolute;
   inset: 0;
@@ -41,6 +42,14 @@ body {
   padding: 25px;
 }
 
+/* لوجو الكافيه */
+.hero-logo {
+  width: 140px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,.6));
+}
+
+/* العنوان */
 .overlay h1 {
   font-size: 3.8rem;
   font-weight: 900;
@@ -48,13 +57,14 @@ body {
   margin-bottom: 10px;
 }
 
+/* الوصف */
 .overlay p {
   color: var(--text-muted);
   font-size: 1.05rem;
   margin-bottom: 30px;
 }
 
-/* BUTTON */
+/* زر الحجز */
 .btn {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: #000;
@@ -69,7 +79,7 @@ body {
   transform: translateY(-3px);
 }
 
-/* SECTIONS */
+/* الأقسام */
 section {
   padding: 70px 20px;
   text-align: center;
@@ -81,14 +91,14 @@ section h2 {
   margin-bottom: 25px;
 }
 
-/* ABOUT */
+/* من نحن */
 .about p {
   max-width: 650px;
   margin: auto;
   color: var(--text-muted);
 }
 
-/* MENU */
+/* المنيو */
 .menu {
   background: var(--bg-light);
 }
@@ -108,7 +118,7 @@ section h2 {
   font-weight: 600;
 }
 
-/* GALLERY */
+/* الصور */
 .images {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -124,7 +134,7 @@ section h2 {
   border-radius: 15px;
 }
 
-/* FOOTER */
+/* الفوتر */
 footer {
   background: #000;
   padding: 40px 20px;
