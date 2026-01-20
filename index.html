@@ -19,11 +19,50 @@
         background-color: #f9f9f9; /* لون خلفية فاتح */
     }
 
-    /* تنسيق قسم المنيو الجديد */
+    /* واجهة الموقع */
+    .hero {
+        background: #333;
+        color: #fff;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    .overlay {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    /* 🔥 لوجو الكافيه */
+    .hero-logo {
+        width: 150px;            /* حجم اللوجو */
+        margin-bottom: 20px;     /* مسافة بين اللوجو والاسم */
+        filter: drop-shadow(0 6px 15px rgba(0,0,0,0.6)); /* ظل خفيف */
+        display: inline-block;
+    }
+
+    .btn {
+        display: inline-block;
+        background: gold;
+        color: #000;
+        padding: 12px 28px;
+        text-decoration: none;
+        border-radius: 25px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    /* قسم عن الكافيه */
+    .about, .gallery, footer {
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    /* قسم المنيو */
     .menu-section {
         text-align: center;
         padding: 40px 20px;
-        background-color: #fff; /* خلفية بيضاء لتمييز المنيو */
+        background-color: #fff;
     }
 
     .menu-section h2 {
@@ -32,41 +71,29 @@
         font-size: 2em;
     }
 
-    /* حاوية الصور المتحركة */
     .menu-carousel {
         display: flex;
-        overflow-x: auto; /* السماح بالتمرير الأفقي */
-        scroll-snap-type: x mandatory; /* تفعيل خاصية الجذب عند التمرير */
-        gap: 25px; /* مسافة بين صور المنيو */
-        padding: 20px 5%; /* حواف داخلية */
-        -webkit-overflow-scrolling: touch; /* تمرير سلس على أجهزة آبل */
-
-        /* إخفاء شريط التمرير السفلي لمظهر أنظف */
+        overflow-x: auto;
+        gap: 25px;
+        padding: 20px 5%;
         scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none;  /* IE 10+ */
-    }
-    .menu-carousel::-webkit-scrollbar {
-        display: none; /* Chrome/Safari/Webkit */
     }
 
-    /* تنسيق صور المنيو نفسها */
-    .menu-carousel img {
-        scroll-snap-align: center; /* الصورة تقف في منتصف الشاشة */
-        flex: 0 0 auto; /* منع الصورة من الانكماش */
-        width: 85vw; /* عرض الصورة 85% من عرض شاشة الموبايل */
-        max-width: 400px; /* أقصى عرض للصورة على الشاشات الكبيرة */
-        height: auto; /* الحفاظ على أبعاد الصورة */
-        border-radius: 15px; /* حواف دائرية للصور */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* ظل خفيف لإبراز المنيو */
-        transition: transform 0.3s ease;
+    .menu-carousel::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
     }
-    
-    /* تأثير بسيط عند الضغط على الصورة */
+
+    .menu-carousel img {
+        width: 85vw;
+        max-width: 400px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
     .menu-carousel img:active {
         transform: scale(0.98);
     }
 
-    /* تلميح للمستخدم */
     .swipe-hint {
         font-size: 0.9em;
         color: #777;
@@ -80,12 +107,19 @@
         60% {transform: translateX(-5px);}
     }
 
-    /* تنسيقات بسيطة لباقي الأقسام لضمان عمل الكود (في حال لم يكن ملف style.css جاهزاً) */
-    .hero { background: #333; color: #fff; padding: 60px 20px; text-align: center; }
-    .btn { display: inline-block; background: gold; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px;}
-    .about, .gallery, footer { text-align: center; padding: 40px 20px; }
-    .gallery .images img { width: 100px; height: 100px; margin: 5px; object-fit: cover; border-radius: 10px;}
-    footer { background: #222; color: #fff; }
+    /* صور من الكافيه */
+    .gallery .images img {
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    footer {
+        background: #222;
+        color: #fff;
+    }
   </style>
 </head>
 
@@ -93,6 +127,10 @@
 
 <header class="hero">
   <div class="overlay">
+
+    <!-- 🔥 هنا هتحط صورة اللوجو -->
+    <img src="images/logo.png" alt="Bella Ciao Logo" class="hero-logo">
+
     <h1>Bella Ciao Café</h1>
     <p>
       قعدة مزاج • ركن خاص بالعائلات والكابلز والبنات  
@@ -114,23 +152,22 @@
 
 <section class="menu-section" id="menu">
   <h2>المنيو</h2>
-  
   <div class="menu-carousel">
     <img src="cafe8.jpg" alt="صفحة المنيو الأولى - مشروبات ساخنة">
     <img src="cafe9.jpg" alt="صفحة المنيو الثانية - مشروبات باردة">
-    <img src="cafe7.jpg" alt="صفحة المنيو الثالثة -المؤكولات ">
-        <img src="cafe6.jpg" alt="صفحة المنيو الرابعه -المؤكولات ">
-
-    </div>
+    <img src="cafe7.jpg" alt="صفحة المنيو الثالثة - المؤكولات">
+    <img src="cafe6.jpg" alt="صفحة المنيو الرابعة - المؤكولات">
+  </div>
   <p class="swipe-hint">اسحب لليسار واليمين لمشاهدة باقي المنيو ↔️</p>
 </section>
+
 <section class="gallery">
   <h2>صور من الكافيه</h2>
   <div class="images">
     <img src="cafe1.jpg" alt="Bella Ciao Cafe">
     <img src="cafe2.jpg" alt="Bella Ciao Cafe">
     <img src="cafe3.jpg" alt="Bella Ciao Cafe">
-       <img src="1.jpg" alt="Bella Ciao Cafe">
+    <img src="1.jpg" alt="Bella Ciao Cafe">
     <img src="2.jpg" alt="Bella Ciao Cafe">
     <img src="3.jpg" alt="Bella Ciao Cafe">
     <img src="4.jpg" alt="Bella Ciao Cafe">
@@ -142,7 +179,7 @@
     <img src="10.jpg" alt="Bella Ciao Cafe">
     <img src="11.jpg" alt="Bella Ciao Cafe">
     <img src="12.jpg" alt="Bella Ciao Cafe">
-<img src="13.jpg" alt="Bella Ciao Cafe">   
+    <img src="13.jpg" alt="Bella Ciao Cafe">
     <img src="14.jpg" alt="Bella Ciao Cafe">
     <img src="15.jpg" alt="Bella Ciao Cafe">
     <img src="16.jpg" alt="Bella Ciao Cafe">
@@ -161,5 +198,3 @@
 
 </body>
 </html>
-
-
