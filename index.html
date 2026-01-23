@@ -52,7 +52,6 @@
         color: var(--primary-color);
     }
 
-    /* زر الطلب المميز في النافبار */
     .order-link {
         border-bottom: 2px solid var(--primary-color);
     }
@@ -136,7 +135,7 @@
         padding-bottom: 5px;
     }
 
-    /* تنسيق قسم الطلب الجديد */
+    /* تنسيق قسم الطلب */
     .order-section {
         background-color: #fff;
         max-width: 600px;
@@ -175,7 +174,6 @@
         outline: none;
     }
 
-    /* تنسيق القوائم والصور */
     .menu-carousel {
         display: flex;
         overflow-x: auto;
@@ -207,7 +205,6 @@
     }
     .images img:hover { transform: scale(1.05); }
 
-    /* ::::: زر الواتساب العائم ::::: */
     .whatsapp-float {
         position: fixed;
         width: 60px;
@@ -242,6 +239,12 @@
         padding: 40px 20px;
         margin-top: 20px;
         text-align: center;
+    }
+
+    /* هذا هو التعديل الجديد لجعل أرقام الهواتف والروابط في الفوتر باللون الأبيض */
+    footer a {
+        color: #fff !important;
+        text-decoration: none;
     }
 
   </style>
@@ -342,32 +345,27 @@
 
 <footer id="contact">
   <p>📍 المحمودية - برج سما</p>
-  <p>📞 01211242211</p>
+  <p>📞 <a href="tel:01211242211" dir="ltr">01211242211</a></p>
   <br>
   <span style="opacity: 0.6; font-size: 0.9em;">© 2026 Bella Ciao Café</span>
 </footer>
 
 <script>
     function sendOrder() {
-        // 1. تجميع البيانات من الحقول
         var tableNum = document.getElementById("tableNumber").value;
         var name = document.getElementById("customerName").value;
         var order = document.getElementById("orderDetails").value;
         
-        // لو الاسم فاضي نكتب "عميل"
         if(name.trim() === "") { name = "عميل"; }
 
-        // 2. رقم موبايل الكافيه (نفس الرقم الموجود في الكود الأصلي)
         var phone = "201211242211";
 
-        // 3. تجهيز نص الرسالة
         var message = `*طلب جديد من الطاولة* 🔔%0a` +
                       `-----------------------%0a` +
                       `🔢 *رقم الطاولة:* ${tableNum}%0a` +
                       `👤 *الاسم:* ${name}%0a` +
                       `📝 *الطلب:* %0a${order}`;
 
-        // 4. فتح واتساب بالرسالة الجاهزة
         var url = `https://wa.me/${phone}?text=${message}`;
         window.open(url, '_blank').focus();
     }
