@@ -36,7 +36,7 @@
         z-index: 1000;
         display: flex;
         justify-content: center;
-        gap: 15px;
+        gap: 20px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
     
@@ -48,8 +48,13 @@
         transition: color 0.3s;
     }
 
-    .navbar a:hover {
+    .navbar a:hover, .navbar a.active {
         color: var(--primary-color);
+    }
+
+    /* زر الطلب المميز في النافبار */
+    .order-link {
+        border-bottom: 2px solid var(--primary-color);
     }
 
     /* ::::: واجهة الموقع (Hero Section) ::::: */
@@ -74,7 +79,7 @@
         margin-bottom: 15px;
         filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
         animation: float 4s ease-in-out infinite;
-        border-radius: 50%; /* لو الصورة مربعة هيدورها */
+        border-radius: 50%;
     }
 
     @keyframes float {
@@ -111,7 +116,10 @@
         font-size: 1.1em;
         box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
         border: none;
+        cursor: pointer;
+        transition: transform 0.2s;
     }
+    .btn:active { transform: scale(0.95); }
 
     /* ::::: الأقسام ::::: */
     section {
@@ -128,6 +136,46 @@
         padding-bottom: 5px;
     }
 
+    /* تنسيق قسم الطلب الجديد */
+    .order-section {
+        background-color: #fff;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 1px solid #eee;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: right;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: var(--dark-bg);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        font-family: 'Tajawal', sans-serif;
+        font-size: 1em;
+        box-sizing: border-box;
+        transition: 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+
+    /* تنسيق القوائم والصور */
     .menu-carousel {
         display: flex;
         overflow-x: auto;
@@ -155,7 +203,9 @@
         height: 100px;
         object-fit: cover;
         border-radius: 8px;
+        transition: transform 0.3s;
     }
+    .images img:hover { transform: scale(1.05); }
 
     /* ::::: زر الواتساب العائم ::::: */
     .whatsapp-float {
@@ -191,15 +241,9 @@
         color: #fff;
         padding: 40px 20px;
         margin-top: 20px;
+        text-align: center;
     }
 
-    /* تحسين شكل الأيقونات SVG */
-    .icon-svg {
-        width: 20px;
-        height: 20px;
-        vertical-align: middle;
-        fill: currentColor;
-    }
   </style>
 </head>
 
@@ -208,8 +252,8 @@
 <nav class="navbar">
     <a href="#home">الرئيسية</a>
     <a href="#menu">المنيو</a>
+    <a href="#order-now" class="order-link">اطلب الآن</a>
     <a href="#gallery">الصور</a>
-    <a href="#contact">الحجز</a>
 </nav>
 
 <header class="hero" id="home">
@@ -221,8 +265,8 @@
       قهوة بمزاج .. ولوكيشن تصوير مميز
     </p>
     
-    <a href="https://wa.me/201211242211" class="btn">
-        احجز طاولتك
+    <a href="#order-now" class="btn">
+        اطلب وأنت مكانك
     </a>
 </header>
 
@@ -231,6 +275,35 @@
   <p style="line-height: 1.8; color: #555; max-width: 800px; margin: auto;">
     في <strong>Bella Ciao</strong>، المكان مصمم عشان تفصل عن العالم. ديكور شيك، مشروبات معمولة بمزاج، وخصوصية تامة ليك ولعيلتك.
   </p>
+</section>
+
+<section id="order-now" style="background-color: #f9f9f9;">
+    <h2>اطلب وأنت على ترابيزتك</h2>
+    <p style="color: #666; margin-bottom: 20px;">اكتب رقم الطاولة وطلباتك، وهيوصلك الويتر فوراً</p>
+    
+    <div class="order-section">
+        <form onsubmit="sendOrder(); return false;">
+            
+            <div class="form-group">
+                <label for="tableNumber">رقم الطاولة (Table No.) *</label>
+                <input type="number" id="tableNumber" class="form-control" placeholder="مثال: 5" required style="text-align: center; font-weight: bold; font-size: 1.2em;">
+            </div>
+
+            <div class="form-group">
+                <label for="customerName">الاسم (اختياري)</label>
+                <input type="text" id="customerName" class="form-control" placeholder="اسم حضرتك">
+            </div>
+
+            <div class="form-group">
+                <label for="orderDetails">طلباتك (Order Details) *</label>
+                <textarea id="orderDetails" class="form-control" rows="4" placeholder="مثال: 2 قهوة سادة، 1 تشيز كيك..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">
+                إرسال الطلب <span style="font-size: 1.2em; margin-right: 5px;">🚀</span>
+            </button>
+        </form>
+    </div>
 </section>
 
 <section class="menu-section" id="menu">
@@ -249,30 +322,14 @@
 <section class="gallery" id="gallery">
   <h2>لقطات من الكافيه</h2>
   <div class="images">
-    <img src="cafe1.jpg" alt="img">
-    <img src="cafe2.jpg" alt="img">
-    <img src="cafe3.jpg" alt="img">
-    <img src="1.jpg" alt="img">
-    <img src="2.jpg" alt="img">
-    <img src="3.jpg" alt="img">
-    <img src="4.jpg" alt="img">
-     <img src="5.jpg" alt="img">
-      <img src="6.jpg" alt="img">
-     <img src="7.jpg" alt="img">
-     <img src="8.jpg" alt="img">
-     <img src="9.jpg" alt="img">
-     <img src="10.jpg" alt="img">
-    <img src="11.jpg" alt="img">
-    <img src="12.jpg" alt="img">
-    <img src="13.jpg" alt="img">
-    <img src="14.jpg" alt="img">
-    <img src="15.jpg" alt="img">
-    <img src="16.jpg" alt="img">
-    <img src="17.jpg" alt="img">
-    <img src="18.jpg" alt="img">
-    <img src="19.jpg" alt="img">
-   <img src="20.jpg" alt="img">
-     <img src="21.jpg" alt="img">
+    <img src="cafe1.jpg" alt="img"><img src="cafe2.jpg" alt="img"><img src="cafe3.jpg" alt="img">
+    <img src="1.jpg" alt="img"><img src="2.jpg" alt="img"><img src="3.jpg" alt="img">
+    <img src="4.jpg" alt="img"><img src="5.jpg" alt="img"><img src="6.jpg" alt="img">
+    <img src="7.jpg" alt="img"><img src="8.jpg" alt="img"><img src="9.jpg" alt="img">
+    <img src="10.jpg" alt="img"><img src="11.jpg" alt="img"><img src="12.jpg" alt="img">
+    <img src="13.jpg" alt="img"><img src="14.jpg" alt="img"><img src="15.jpg" alt="img">
+    <img src="16.jpg" alt="img"><img src="17.jpg" alt="img"><img src="18.jpg" alt="img">
+    <img src="19.jpg" alt="img"><img src="20.jpg" alt="img"><img src="21.jpg" alt="img">
   </div>
 </section>
 
@@ -290,7 +347,31 @@
   <span style="opacity: 0.6; font-size: 0.9em;">© 2026 Bella Ciao Café</span>
 </footer>
 
+<script>
+    function sendOrder() {
+        // 1. تجميع البيانات من الحقول
+        var tableNum = document.getElementById("tableNumber").value;
+        var name = document.getElementById("customerName").value;
+        var order = document.getElementById("orderDetails").value;
+        
+        // لو الاسم فاضي نكتب "عميل"
+        if(name.trim() === "") { name = "عميل"; }
+
+        // 2. رقم موبايل الكافيه (نفس الرقم الموجود في الكود الأصلي)
+        var phone = "201211242211";
+
+        // 3. تجهيز نص الرسالة
+        var message = `*طلب جديد من الطاولة* 🔔%0a` +
+                      `-----------------------%0a` +
+                      `🔢 *رقم الطاولة:* ${tableNum}%0a` +
+                      `👤 *الاسم:* ${name}%0a` +
+                      `📝 *الطلب:* %0a${order}`;
+
+        // 4. فتح واتساب بالرسالة الجاهزة
+        var url = `https://wa.me/${phone}?text=${message}`;
+        window.open(url, '_blank').focus();
+    }
+</script>
+
 </body>
 </html>
-
-
